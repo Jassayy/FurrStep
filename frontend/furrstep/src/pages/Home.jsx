@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import Button from "../components/Button";
 
 const Home = () => {
      const [username, setUsername] = useState("");
+     const [pets, setPets] = useState([]);
 
      useEffect(() => {
           const fetchUser = async () => {
@@ -23,6 +26,23 @@ const Home = () => {
           fetchUser();
      }, []);
 
+     useEffect(() => {
+          const getPets = async () => {
+               try {
+                    const response = await axios.get(
+                         "http://localhost:3000/api/v1/pets/get-all-pets",
+                         {
+                              withCredentials: true,
+                         }
+                    );
+                    setPets(response.data.data);
+               } catch (error) {
+                    console.error("Error fetching pets:", error);
+               }
+          };
+          getPets();
+     }, []);
+
      return (
           <div className="relative min-h-screen pt-16 overflow-hidden bg-gradient-to-b from-blue-50 to-purple-50 dark:from-slate-900 dark:to-slate-800">
                {/* Animated blobs - Responsive sizes */}
@@ -34,9 +54,181 @@ const Home = () => {
                     <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-200">
                          Hieee!{" "}
                          <span className="text-blue-500 dark:text-yellow-500">
-                              {username}
+                              {username}...
                          </span>
                     </h1>
+                    <h1 className="text-3xl font-bold text-gray-800 dark:text-gray-200 mt-6">
+                         Here are your Pets
+                    </h1>
+                    <Link to="/create-pet">
+                         <Button className="mt-4">Add Pet +</Button>
+                    </Link>
+
+                    <div className="max-w-6xl mx-auto mt-8 px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  mb-10">
+                         {pets.map((pet) => (
+                              <div
+                                   key={pet._id}
+                                   className="bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm rounded-xl shadow-lg p-6 transform transition duration-300 hover:scale-105 hover:shadow-xl border border-gray-100 dark:border-gray-700"
+                              >
+                                   <div className="flex items-center justify-between mb-4">
+                                        <h3 className="text-2xl font-bold text-gray-800 dark:text-white">
+                                             {pet.name}
+                                        </h3>
+                                        <div className="flex gap-2">
+                                             <Link to={`/track/${pet._id}`}>
+                                                  <svg
+                                                       className="w-8 h-8 text-blue-500 hover:text-blue-600 transition-colors cursor-pointer"
+                                                       fill="none"
+                                                       stroke="currentColor"
+                                                       viewBox="0 0 24 24"
+                                                  >
+                                                       <path
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            strokeWidth="2"
+                                                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                                                       />
+                                                  </svg>
+                                             </Link>
+                                             <svg
+                                                  className="w-8 h-8 text-purple-500 dark:text-purple-400"
+                                                  fill="none"
+                                                  stroke="currentColor"
+                                                  viewBox="0 0 24 24"
+                                             >
+                                                  <path
+                                                       strokeLinecap="round"
+                                                       strokeLinejoin="round"
+                                                       strokeWidth="2"
+                                                       d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75z"
+                                                  />
+                                             </svg>
+                                        </div>
+                                   </div>
+                                   <div className="space-y-3 text-gray-600 dark:text-gray-300">
+                                        <div className="flex items-center gap-2">
+                                             <svg
+                                                  className="w-5 h-5 text-teal-500"
+                                                  fill="none"
+                                                  stroke="currentColor"
+                                                  viewBox="0 0 24 24"
+                                             >
+                                                  <path
+                                                       strokeLinecap="round"
+                                                       strokeLinejoin="round"
+                                                       strokeWidth="2"
+                                                       d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                                                  />
+                                             </svg>
+                                             <p>
+                                                  <span className="font-semibold">
+                                                       Species:
+                                                  </span>{" "}
+                                                  {pet.species}
+                                             </p>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                             <svg
+                                                  className="w-5 h-5 text-blue-500"
+                                                  fill="none"
+                                                  stroke="currentColor"
+                                                  viewBox="0 0 24 24"
+                                             >
+                                                  <path
+                                                       strokeLinecap="round"
+                                                       strokeLinejoin="round"
+                                                       strokeWidth="2"
+                                                       d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                                                  />
+                                             </svg>
+                                             <p>
+                                                  <span className="font-semibold">
+                                                       Breed:
+                                                  </span>{" "}
+                                                  {pet.breed}
+                                             </p>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                             <svg
+                                                  className="w-5 h-5 text-yellow-500"
+                                                  fill="none"
+                                                  stroke="currentColor"
+                                                  viewBox="0 0 24 24"
+                                             >
+                                                  <path
+                                                       strokeLinecap="round"
+                                                       strokeLinejoin="round"
+                                                       strokeWidth="2"
+                                                       d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                  />
+                                             </svg>
+                                             <p>
+                                                  <span className="font-semibold">
+                                                       Age:
+                                                  </span>{" "}
+                                                  {pet.age} years
+                                             </p>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                             <svg
+                                                  className="w-5 h-5 text-pink-500"
+                                                  fill="none"
+                                                  stroke="currentColor"
+                                                  viewBox="0 0 24 24"
+                                             >
+                                                  <path
+                                                       strokeLinecap="round"
+                                                       strokeLinejoin="round"
+                                                       strokeWidth="2"
+                                                       d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"
+                                                  />
+                                             </svg>
+                                             <p>
+                                                  <span className="font-semibold">
+                                                       Weight:
+                                                  </span>{" "}
+                                                  {pet.weight} kg
+                                             </p>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                             <svg
+                                                  className={`w-5 h-5 ${
+                                                       pet.isVaccinated
+                                                            ? "text-green-500"
+                                                            : "text-red-500"
+                                                  }`}
+                                                  fill="none"
+                                                  stroke="currentColor"
+                                                  viewBox="0 0 24 24"
+                                             >
+                                                  <path
+                                                       strokeLinecap="round"
+                                                       strokeLinejoin="round"
+                                                       strokeWidth="2"
+                                                       d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                  />
+                                             </svg>
+                                             <p>
+                                                  <span className="font-semibold">
+                                                       Vaccination Status:
+                                                  </span>{" "}
+                                                  <span
+                                                       className={
+                                                            pet.isVaccinated
+                                                                 ? "text-green-500"
+                                                                 : "text-red-500"
+                                                       }
+                                                  >
+                                                       {pet.isVaccinated
+                                                            ? "Vaccinated"
+                                                            : "Not Vaccinated"}
+                                                  </span>
+                                             </p>
+                                        </div>
+                                   </div>
+                              </div>
+                         ))}
+                    </div>
                </div>
 
                <style jsx>{`

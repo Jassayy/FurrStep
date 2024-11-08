@@ -23,7 +23,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                     const response = await axios.get(
                          "http://localhost:3000/api/v1/users/check-auth",
                          {
-                              withCredentials: true
+                              withCredentials: true,
                          }
                     );
                     if (response.data.success) {
@@ -59,7 +59,13 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                <nav className="flex justify-between items-center px-4 sm:px-10 h-16 sm:h-20 bg-white/70 dark:bg-slate-900 backdrop-blur-sm shadow-xl">
                     <div
                          className="text-2xl font-bold text-purple-600 cursor-pointer"
-                         onClick={() => navigate("/")}
+                         onClick={() => {
+                              if (isAuthenticated) {
+                                   navigate("/home");
+                              } else {
+                                   navigate("/");
+                              }
+                         }}
                     >
                          <Logo />
                     </div>
@@ -109,22 +115,34 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                          <div className="hidden md:flex flex-1">
                               <ul className="flex justify-evenly items-center gap-12 w-full">
                                    <li>
-                                        <Link to="/home" className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors">
+                                        <Link
+                                             to="/home"
+                                             className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors"
+                                        >
                                              Home
                                         </Link>
                                    </li>
                                    <li>
-                                        <Link to="/about" className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors">
+                                        <Link
+                                             to="/about"
+                                             className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors"
+                                        >
                                              About
                                         </Link>
                                    </li>
                                    <li>
-                                        <Link to="/goals" className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors">
+                                        <Link
+                                             to="/goals"
+                                             className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors"
+                                        >
                                              Goals
                                         </Link>
                                    </li>
                                    <li>
-                                        <Link to="/rewards" className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors">
+                                        <Link
+                                             to="/rewards"
+                                             className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors"
+                                        >
                                              Rewards
                                         </Link>
                                    </li>
@@ -193,22 +211,34 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                     >
                          <ul className="flex flex-col items-center py-4 space-y-4">
                               <li>
-                                   <Link to="/home" className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors cursor-pointer">
+                                   <Link
+                                        to="/home"
+                                        className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors cursor-pointer"
+                                   >
                                         Home
                                    </Link>
                               </li>
                               <li>
-                                   <Link to="/about" className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors cursor-pointer">
+                                   <Link
+                                        to="/about"
+                                        className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors cursor-pointer"
+                                   >
                                         About
                                    </Link>
                               </li>
                               <li>
-                                   <Link to="/goals" className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors cursor-pointer">
+                                   <Link
+                                        to="/goals"
+                                        className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors cursor-pointer"
+                                   >
                                         Goals
                                    </Link>
                               </li>
                               <li>
-                                   <Link to="/rewards" className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors cursor-pointer">
+                                   <Link
+                                        to="/rewards"
+                                        className="text-slate-700 dark:text-slate-200 hover:text-purple-600 transition-colors cursor-pointer"
+                                   >
                                         Rewards
                                    </Link>
                               </li>
@@ -249,7 +279,9 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                                              </svg>
                                         )}
                                    </button>
-                                   <Button onClick={handleLogout}>Logout</Button>
+                                   <Button onClick={handleLogout}>
+                                        Logout
+                                   </Button>
                               </div>
                          </ul>
                     </div>

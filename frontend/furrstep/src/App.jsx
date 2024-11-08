@@ -8,6 +8,8 @@ import Goals from "./pages/Goals";
 import Rewards from "./pages/Rewards";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import CreatePet from "./pages/CreatePet";
+import Activity from "./pages/Activity";
 
 function App() {
      const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -35,6 +37,8 @@ function App() {
                     <Route path="/about" element={<About />} />
                     <Route path="/goals" element={<Goals />} />
                     <Route path="/rewards" element={<Rewards />} />
+                    <Route path="/create-pet" element={<CreatePet />} />
+                    <Route path="/track/:petId" element={<Activity />} />
                </Routes>
           </Router>
      );

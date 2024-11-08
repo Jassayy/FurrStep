@@ -14,7 +14,7 @@ const About = () => {
                               <img
                                    src="https://www.wallpaperbetter.com/wallpaper/257/632/947/playful-dog-2K-wallpaper.jpg"
                                    alt="Playful dog"
-                                   className="rounded-lg shadow-xl w-full h-auto"
+                                   className="rounded-lg shadow-xl w-full h-full"
                               />
                          </div>
                          <div className="md:w-1/2 text-gray-800 dark:text-gray-200">

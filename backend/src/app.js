@@ -18,6 +18,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 import userRoutes from "./routes/user.routes.js";
-
 app.use("/api/v1/users", userRoutes);
+
+import petRoutes from "./routes/pet.routes.js";
+app.use("/api/v1/pets", petRoutes);
+
 export { app };

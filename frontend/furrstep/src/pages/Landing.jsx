@@ -1,7 +1,9 @@
 import React from "react";
 import Button from "../components/Button";
+import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
+     const navigate = useNavigate();
      return (
           <div className="relative min-h-screen overflow-hidden bg-gradient-to-b from-blue-50 to-purple-50 dark:from-slate-900 dark:to-slate-800">
                {/* Animated blobs - Responsive sizes */}
@@ -26,6 +28,7 @@ const Landing = () => {
                          </p>
                          <div className="flex justify-center gap-4">
                               <Button
+                                   onClick={() => navigate("/signup")}
                                    className={
                                         "h-12 sm:h-16 text-lg sm:text-xl w-36 sm:w-44 transform hover:scale-105 transition-transform"
                                    }
@@ -74,8 +77,18 @@ const Landing = () => {
                               </p>
                               <div className="mt-4 flex items-center text-teal-600 hover:text-teal-700 cursor-pointer transition-all duration-500">
                                    <span className="text-sm">Learn more</span>
-                                   <svg className="w-4 h-4 ml-1 transition-transform duration-500 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                   <svg
+                                        className="w-4 h-4 ml-1 transition-transform duration-500 group-hover:translate-x-1"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                   >
+                                        <path
+                                             strokeLinecap="round"
+                                             strokeLinejoin="round"
+                                             strokeWidth={2}
+                                             d="M9 5l7 7-7 7"
+                                        />
                                    </svg>
                               </div>
                          </div>
@@ -103,8 +116,18 @@ const Landing = () => {
                               </p>
                               <div className="mt-4 flex items-center text-blue-600 hover:text-blue-700 cursor-pointer">
                                    <span className="text-sm">Learn more</span>
-                                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                   <svg
+                                        className="w-4 h-4 ml-1"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                   >
+                                        <path
+                                             strokeLinecap="round"
+                                             strokeLinejoin="round"
+                                             strokeWidth={2}
+                                             d="M9 5l7 7-7 7"
+                                        />
                                    </svg>
                               </div>
                          </div>
@@ -132,8 +155,18 @@ const Landing = () => {
                               </p>
                               <div className="mt-4 flex items-center text-pink-600 hover:text-pink-700 cursor-pointer">
                                    <span className="text-sm">Learn more</span>
-                                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                   <svg
+                                        className="w-4 h-4 ml-1"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                   >
+                                        <path
+                                             strokeLinecap="round"
+                                             strokeLinejoin="round"
+                                             strokeWidth={2}
+                                             d="M9 5l7 7-7 7"
+                                        />
                                    </svg>
                               </div>
                          </div>
@@ -153,7 +186,9 @@ const Landing = () => {
                               <div className="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
                                    <div className="flex justify-center mb-4">
                                         <div className="w-16 h-16 bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center">
-                                             <span className="text-2xl">🐕</span>
+                                             <span className="text-2xl">
+                                                  🐕
+                                             </span>
                                         </div>
                                    </div>
                                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">
@@ -170,7 +205,9 @@ const Landing = () => {
                               <div className="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300">
                                    <div className="flex justify-center mb-4">
                                         <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
-                                             <span className="text-2xl">🐱</span>
+                                             <span className="text-2xl">
+                                                  🐱
+                                             </span>
                                         </div>
                                    </div>
                                    <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">
@@ -190,20 +227,36 @@ const Landing = () => {
                     <div className="text-center mb-20">
                          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                               <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
-                                   <h3 className="text-4xl font-bold text-teal-600 mb-2">10k+</h3>
-                                   <p className="text-gray-600 dark:text-gray-300">Happy Pets</p>
+                                   <h3 className="text-4xl font-bold text-teal-600 mb-2">
+                                        10k+
+                                   </h3>
+                                   <p className="text-gray-600 dark:text-gray-300">
+                                        Happy Pets
+                                   </p>
                               </div>
                               <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
-                                   <h3 className="text-4xl font-bold text-purple-600 mb-2">98%</h3>
-                                   <p className="text-gray-600 dark:text-gray-300">Satisfaction Rate</p>
+                                   <h3 className="text-4xl font-bold text-purple-600 mb-2">
+                                        98%
+                                   </h3>
+                                   <p className="text-gray-600 dark:text-gray-300">
+                                        Satisfaction Rate
+                                   </p>
                               </div>
                               <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
-                                   <h3 className="text-4xl font-bold text-pink-600 mb-2">24/7</h3>
-                                   <p className="text-gray-600 dark:text-gray-300">Support</p>
+                                   <h3 className="text-4xl font-bold text-pink-600 mb-2">
+                                        24/7
+                                   </h3>
+                                   <p className="text-gray-600 dark:text-gray-300">
+                                        Support
+                                   </p>
                               </div>
                               <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-lg">
-                                   <h3 className="text-4xl font-bold text-blue-600 mb-2">50+</h3>
-                                   <p className="text-gray-600 dark:text-gray-300">Expert Vets</p>
+                                   <h3 className="text-4xl font-bold text-blue-600 mb-2">
+                                        50+
+                                   </h3>
+                                   <p className="text-gray-600 dark:text-gray-300">
+                                        Expert Vets
+                                   </p>
                               </div>
                          </div>
                     </div>
