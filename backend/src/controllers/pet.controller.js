@@ -61,4 +61,41 @@ const getPet = asyncHandler(async (req, res) => {
      }
 });
 
-export { createPet, getAllPets, getPet };
+const deletePet = asyncHandler(async (req, res) => {
+     try {
+          const { petId } = req.params;
+          const pet = await Pet.findByIdAndDelete(petId);
+          return res
+               .status(200)
+               .json(new ApiResponse(200, pet, "Pet deleted successfully"));
+     } catch (error) {
+          throw new ApiError(500, "Error deleting pet");
+     }
+});
+
+const updatePet = asyncHandler(async (req, res) => {
+     try {
+          const { petId } = req.params;
+          const { name, age, species, breed, weight, isVaccinated } = req.body;
+          const pet = await Pet.findByIdAndUpdate(petId, {
+               name,
+               age,
+               species,
+               breed,
+               weight,
+               isVaccinated,
+          });
+
+          if (!pet) {
+               throw new ApiError(404, "Pet not found");
+          }
+
+          return res
+               .status(200)
+               .json(new ApiResponse(200, pet, "Pet updated successfully"));
+     } catch (error) {
+          throw new ApiError(500, "Error updating pet");
+     }
+});
+
+export { createPet, getAllPets, getPet, deletePet, updatePet };

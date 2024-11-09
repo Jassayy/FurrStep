@@ -23,4 +23,10 @@ app.use("/api/v1/users", userRoutes);
 import petRoutes from "./routes/pet.routes.js";
 app.use("/api/v1/pets", petRoutes);
 
+import activityRoutes from "./routes/activity.routes.js";
+app.use("/api/v1/activities", activityRoutes);
+
+import goalRoutes from "./routes/goal.routes.js";
+app.use("/api/v1/goals", goalRoutes);
+
 export { app };

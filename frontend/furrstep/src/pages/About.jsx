@@ -14,10 +14,10 @@ const About = () => {
                               <img
                                    src="https://www.wallpaperbetter.com/wallpaper/257/632/947/playful-dog-2K-wallpaper.jpg"
                                    alt="Playful dog"
-                                   className="rounded-lg shadow-xl w-full h-full"
+                                   className="rounded-lg shadow-xl w-full h-full object-cover"
                               />
                          </div>
-                         <div className="md:w-1/2 text-gray-800 dark:text-gray-200">
+                         <div className="md:w-1/2 text-gray-800 dark:text-gray-200 ">
                               <h1 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6">
                                    About{" "}
                                    <span className="text-blue-500 dark:text-yellow-500">
@@ -25,14 +25,14 @@ const About = () => {
                                    </span>
                               </h1>
                               <div className="space-y-3 md:space-y-4">
-                                   <p className="text-base md:text-lg">
+                                   <p className="text-base md:text-lg font-mono font-semibold">
                                         Hi, I'm Jas! As a passionate animal
                                         lover, I created FurrStep with a clear
                                         mission in mind: to enhance and protect
                                         the health of our beloved pets at every
                                         stage of their lives.
                                    </p>
-                                   <p className="text-base md:text-lg">
+                                   <p className="text-base md:text-lg font-mono font-semibold">
                                         My primary focus is on improving the
                                         quality of life for middle-aged and
                                         senior pets, who often need extra care
@@ -41,7 +41,7 @@ const About = () => {
                                         challenges as they age, and I'm here to
                                         help them stay healthy and happy.
                                    </p>
-                                   <p className="text-base md:text-lg">
+                                   <p className="text-base md:text-lg font-mono font-semibold">
                                         But I haven't forgotten about the
                                         younger pets! I believe in establishing
                                         good health habits early on, setting the

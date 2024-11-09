@@ -10,7 +10,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import CreatePet from "./pages/CreatePet";
 import Activity from "./pages/Activity";
-
+import AddActivity from "./pages/AddActivity";
+import EditPet from "./pages/EditPet";
+import AddGoals from "./pages/AddGoals";
 function App() {
      const [isAuthenticated, setIsAuthenticated] = useState(false);
      return (
@@ -39,6 +41,12 @@ function App() {
                     <Route path="/rewards" element={<Rewards />} />
                     <Route path="/create-pet" element={<CreatePet />} />
                     <Route path="/track/:petId" element={<Activity />} />
+                    <Route
+                         path="/add-activity/:petId"
+                         element={<AddActivity />}
+                    />
+                    <Route path="/edit-pet/:petId" element={<EditPet />} />
+                    <Route path="/add-goals/:petId" element={<AddGoals />} />
                </Routes>
           </Router>
      );
